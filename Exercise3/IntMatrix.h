@@ -9,6 +9,7 @@
 #define INTMATRIX_H
 
 #include <iostream>
+#include <cstddef>
 #include <vector>
 
 
@@ -22,7 +23,7 @@ public:
      * @param cols Number of columns in the matrix.
      * @param initialValue The initial value to fill the matrix with.
      */
-    IntMatrix(std::vector<int>::size_type rows, std::vector<int>::size_type cols, int initialValue = 0);
+    IntMatrix(size_t rows, size_t cols, int initialValue = 0);
 
     /**
      * @brief Construct a new Int Matrix object using an initializer list.
@@ -39,14 +40,14 @@ public:
      * 
      * @return Number of rows.
      */
-    std::vector<int>::size_type getRows() const;
+    size_t getRows() const;
 
     /**
      * Getter for the number of columns in the matrix.
      * 
      * @return Number of columns.
      */
-    std::vector<int>::size_type getCols() const;
+    size_t getCols() const;
 
     /**
      * Operator overloading for matrix addition.
@@ -79,7 +80,7 @@ public:
      * @param index Row index.
      * @return Reference to the row vector.
      */
-    std::vector<int>& operator[](std::vector<int>::size_type index);
+    std::vector<int>& operator[](size_t index);
 
     /**
      * Operator overloading for accessing matrix elements.
@@ -88,7 +89,7 @@ public:
      * @param index Row index.
      * @return Const reference to the row vector.
      */
-    const std::vector<int>& operator[](std::vector<int>::size_type index) const;
+    const std::vector<int>& operator[](size_t index) const;
 
     /**
      * Overloading the insertion operator for outputting the matrix.

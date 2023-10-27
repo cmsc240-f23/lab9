@@ -20,7 +20,7 @@
  * @param cols The number of columns in the matrix.
  * @param initialValue (optional) The initial value to fill the matrix. Defaults to 0.
  */
-IntMatrix::IntMatrix(std::vector<int>::size_type rows, std::vector<int>::size_type cols, int initialValue) 
+IntMatrix::IntMatrix(size_t rows, size_t cols, int initialValue) 
 {
     // Resizes the outer vector to the number of rows and each inner vector (row) to the number of columns.
     // Fills the matrix with the initial value provided.
@@ -48,7 +48,7 @@ IntMatrix::IntMatrix(std::initializer_list<std::initializer_list<int>> values)
  * 
  * @return The number of rows as a size_type.
  */
-std::vector<int>::size_type IntMatrix::getRows() const 
+size_t IntMatrix::getRows() const 
 {
     return data.size(); // Returns the size of the outer vector which represents the number of rows.
 }
@@ -58,7 +58,7 @@ std::vector<int>::size_type IntMatrix::getRows() const
  * 
  * @return The number of columns as a size_type.
  */
-std::vector<int>::size_type IntMatrix::getCols() const 
+size_t IntMatrix::getCols() const 
 {
     return data[0].size(); // Returns the size of the first inner vector which represents the number of columns.
 }
@@ -81,9 +81,9 @@ IntMatrix IntMatrix::operator+(const IntMatrix& other) const
     IntMatrix result(getRows(), getCols());
 
     // Iterates through each element of the matrices and adds them.
-    for (std::vector<int>::size_type i = 0; i < getRows(); i++) 
+    for (size_t i = 0; i < getRows(); i++) 
     {
-        for (std::vector<int>::size_type j = 0; j < getCols(); j++) 
+        for (size_t j = 0; j < getCols(); j++) 
         {
             result[i][j] = data[i][j] + other[i][j];
         }
@@ -110,9 +110,9 @@ IntMatrix IntMatrix::operator-(const IntMatrix& other) const
     IntMatrix result(getRows(), getCols());
 
     // Iterates through each element of the matrices and subtracts them.
-    for (std::vector<int>::size_type i = 0; i < getRows(); i++) 
+    for (size_t i = 0; i < getRows(); i++) 
     {
-        for (std::vector<int>::size_type j = 0; j < getCols(); j++) 
+        for (size_t j = 0; j < getCols(); j++) 
         {
             result[i][j] = data[i][j] - other[i][j];
         }
@@ -139,11 +139,11 @@ IntMatrix IntMatrix::operator*(const IntMatrix& other) const
     IntMatrix result(getRows(), other.getCols());
 
     // Performs matrix multiplication.
-    for (std::vector<int>::size_type i = 0; i < getRows(); i++) 
+    for (size_t i = 0; i < getRows(); i++) 
     {
-        for (std::vector<int>::size_type j = 0; j < other.getCols(); j++) 
+        for (size_t j = 0; j < other.getCols(); j++) 
         {
-            for (std::vector<int>::size_type k = 0; k < getCols(); k++) 
+            for (size_t k = 0; k < getCols(); k++) 
             {
                 result[i][j] += data[i][k] * other[k][j];
             }
@@ -159,7 +159,7 @@ IntMatrix IntMatrix::operator*(const IntMatrix& other) const
  * @param index The row index to access.
  * @return A reference to the row vector at the given index.
  */
-std::vector<int>& IntMatrix::operator[](std::vector<int>::size_type index) 
+std::vector<int>& IntMatrix::operator[](size_t index) 
 {
     return data[index]; // Returns a reference to the row vector, allowing modification.
 }
@@ -170,7 +170,7 @@ std::vector<int>& IntMatrix::operator[](std::vector<int>::size_type index)
  * @param index The row index to access.
  * @return A const reference to the row vector at the given index.
  */
-const std::vector<int>& IntMatrix::operator[](std::vector<int>::size_type index) const 
+const std::vector<int>& IntMatrix::operator[](size_t index) const 
 {
     return data[index]; // Returns a const reference to the row vector, preventing modification.
 }
